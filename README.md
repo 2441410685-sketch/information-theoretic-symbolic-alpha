@@ -20,7 +20,7 @@
 | Union only | 57 | 22.89% | 0.896 | -27.29% | 5.45% | 0.0596 |
 | MI only | 24 | 21.65% | 0.852 | -23.81% | 4.57% | 0.0577 |
 
-`Traditional + CMI core` 相对传统基线的配对日收益增量为 0.94 bps/日，算术年化 2.37%，Newey–West $t=1.31$；20 日 moving-block bootstrap 的年化 95% 区间为 $[-1.01\%,5.99\%]$，区间覆盖零。
+`Traditional + CMI core` 相对传统基线的配对日收益增量为 0.94 bps/日，算术年化 2.37%。
 
 ![Frozen V1.1 result overview](results/final/figures/model_overview.png)
 
