@@ -1,0 +1,100 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Environments and local secrets
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+
+# IDE and notebook artifacts
+.idea/
+.vscode/
+.ipynb_checkpoints/
+
+# Logs, scheduler output, process files and transfer archives
+*.log
+*.pid
+slurm-*.out
+slurm-*.err
+*.zip
+*.tar
+*.tar.gz
+
+# Local data: retain directory placeholders and documentation only
+data/raw/*
+!data/raw/.gitkeep
+data/interim/*
+!data/interim/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+
+# Local research history and large intermediates. They remain on disk, but the
+# public repository exposes only the frozen evidence in results/final/.
+daily/
+experiments/
+report/
+cluster_upload*/
+AGENTS.md
+PROJECT_ROADMAP.md
+RESEARCH_PROTOCOL.md
+pytest.ini
+
+# Keep only the two final experiment configurations.
+configs/*
+!configs/README.md
+!configs/large_scale_gp_v2.json
+!configs/lightgbm_final_v11.json
+
+# Keep only runnable final-pipeline entry points.
+scripts/*
+!scripts/build_lightgbm_final_v11_data.py
+!scripts/prepare_large_gp_panel.py
+!scripts/run_large_gp_cluster.py
+!scripts/build_large_gp_union.py
+!scripts/validate_large_gp_candidates.py
+!scripts/run_large_gp_validation_null.py
+!scripts/run_v2_lowdim_cmi_selection.py
+!scripts/prepare_lightgbm_final_v1.py
+!scripts/run_lightgbm_final_v11.py
+!scripts/run_cmi_core_deciles_v11.py
+!scripts/build_final_report_assets.py
+
+# Keep only cluster launchers for the final GP/CMI/LightGBM path.
+cluster/*
+!cluster/run_large_gp_v2.sh
+!cluster/submit_large_gp_v2.slurm
+!cluster/submit_v2_lowdim_cmi.slurm
+!cluster/submit_lightgbm_final_v11_pipeline.sh
+!cluster/submit_lightgbm_final_v11_prepare.slurm
+!cluster/submit_lightgbm_final_v11_train.slurm
+
+# Abandoned interfaces: the files remain locally for research history.
+src/data/contracts.py
+src/models/cross_sectional_lambdarank.py
+src/portfolio/topk_cost.py
+src/portfolio/topk_gross.py
+src/**/.gitkeep
+src/universe/
+src/utils/
+src/validation/temporal.py
+src/validation/nonlinear_alpha.py
+
+# One compact conclusion-critical test suite replaces the Day-by-Day test view.
+tests/*
+!tests/test_core_data_and_execution.py
+!tests/test_core_information.py
+!tests/test_core_preprocessing_and_validation.py
+!tests/test_core_symbolic.py
+
+# Commit only the curated, lightweight final evidence package.
+results/*
+!results/final/
+!results/final/**

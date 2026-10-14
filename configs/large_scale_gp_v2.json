@@ -1,0 +1,140 @@
+{
+  "version": "2.0-semantic-diversity-frozen",
+  "research_split": {
+    "selection_year": 2022,
+    "selection_sessions": 240,
+    "validation_year": 2023,
+    "validation_sessions": 240,
+    "date_selection_rule": "first_n_exchange_sessions",
+    "locked_final_holdout": "2024-01-01/2025-12-31",
+    "final_holdout_opened": false
+  },
+  "sampling": {
+    "stocks_per_date": 500,
+    "method": "deterministic_proportional_industry_size_strata",
+    "size_buckets": 5,
+    "random_seed": 20260923,
+    "neutralization_reference": "full_eligible_cross_section_before_sampling"
+  },
+  "preprocessing": {
+    "order": [
+      "expression_on_dimensionless_pit_terminals",
+      "daily_mad_winsorization",
+      "daily_industry_and_log_float_market_cap_neutralization",
+      "daily_rank_gaussianization",
+      "fitness_on_frozen_sample"
+    ],
+    "mad_multiple": 5.0,
+    "minimum_cross_section": 50,
+    "label_transform": "daily_full_cross_section_rank_gaussianization"
+  },
+  "grammar": {
+    "terminal_names": [
+      "return_1d",
+      "gap_open",
+      "high_low_ratio",
+      "close_position",
+      "body_to_range",
+      "volume_rel5",
+      "volume_rel20",
+      "amount_rel5",
+      "amount_rel20",
+      "turnover_pct",
+      "turnover_rel20",
+      "volatility20"
+    ],
+    "operator_names": [
+      "add",
+      "subtract",
+      "multiply",
+      "safe_div",
+      "delay",
+      "delta",
+      "ts_mean",
+      "ts_std",
+      "ts_min",
+      "ts_max",
+      "ts_rank",
+      "ts_corr",
+      "ts_cov",
+      "rank"
+    ],
+    "raw_price_volume_terminals_used_by_generator": false,
+    "v1_parser_compatibility_retained": true
+  },
+  "search": {
+    "channels": ["rankic", "mi"],
+    "independent_archipelagos": true,
+    "islands_per_channel": 8,
+    "population_per_island": 128,
+    "generations": 24,
+    "population_slots_per_channel": 24576,
+    "migration_interval_generations": 4,
+    "migration_topology": "ring",
+    "elite_migrants": 1,
+    "novelty_migrants": 2,
+    "tournament_size": 4,
+    "elite_size": 4,
+    "reproduction_probability": 0.08,
+    "crossover_probability": 0.46,
+    "mutation_probability": 0.46,
+    "initial_max_depth": 5,
+    "mutation_max_depth": 4,
+    "terminal_probability": 0.25,
+    "windows": [2, 3, 5, 10, 20, 40, 60],
+    "base_random_seed": 20260923,
+    "ksg_k": 5,
+    "semantic_probe_size": 1024,
+    "semantic_projection_bits": 128,
+    "semantic_min_hamming": 4,
+    "semantic_retry_limit": 6,
+    "semantic_shortlist_hamming_schedule": [4, 2, 0],
+    "fitness_soft_penalties": [],
+    "cmi_inside_search": false
+  },
+  "hard_constraints": {
+    "maximum_nodes": 39,
+    "maximum_depth": 9,
+    "maximum_required_history": 60,
+    "maximum_weighted_complexity": 32.0,
+    "minimum_valid_fraction": 0.8,
+    "minimum_valid_observations": 96000,
+    "minimum_unique_values": 2,
+    "minimum_valid_dates": 180
+  },
+  "shortlist": {
+    "rankic_channel": 100,
+    "mi_channel": 100,
+    "union_maximum_after_structural_deduplication": 200,
+    "selection_semantic_control": "128-bit sign-invariant SimHash, fitness-first greedy archive",
+    "validation_exact_semantic_threshold": 0.99,
+    "stability_and_turnover_role": "post_search_diagnostics_only",
+    "cmi_role": "post_search_incremental_selection_only"
+  },
+  "hypothesis_testing": {
+    "status": "development_screen_not_final_confirmation",
+    "validation_period": 2023,
+    "null": "shared_20_session_block_permutation",
+    "permutations": 999,
+    "endpoints": ["absolute_mean_rankic", "pooled_ksg_mi"],
+    "candidate_omnibus": "bonferroni_min_p_across_two_endpoints",
+    "multiple_testing": ["benjamini_hochberg_q_0.10", "shared_maxT_FWER_0.05"],
+    "semantic_representatives_chosen_on": "selection_only",
+    "locked_final_holdout_opened": false
+  },
+  "cluster": {
+    "node_cpu": "Intel Xeon Gold 6248 2.5GHz 20C",
+    "node_memory_gb": 192,
+    "workers_per_channel": 8,
+    "simultaneous_channels": 2,
+    "reserved_cpu_cores": 4,
+    "force_single_threaded_numeric_kernels": true,
+    "estimated_search_core_hours": "85-185",
+    "estimated_search_wall_hours": "6-13",
+    "estimated_validation_wall_hours": "1-2",
+    "estimated_null_wall_hours": "6-24 depending on exact semantic representative count",
+    "estimated_peak_memory_gb": "60-100",
+    "requested_job_wall_hours": 48,
+    "eight_hour_policy": "cluster_only"
+  }
+}

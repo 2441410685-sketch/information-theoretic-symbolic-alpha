@@ -1,0 +1,30 @@
+{
+  "representative_count": 57,
+  "max_selected_factors": 4,
+  "maximum_conditioning_dimension": 3,
+  "maximum_joint_dimension": 5,
+  "permutations": 99,
+  "observed_estimator_calls": 222,
+  "half_window_estimator_calls": 8,
+  "null_estimator_calls": 21978,
+  "total_estimator_calls": 22208,
+  "workers": 16,
+  "rough_core_hours_low": 18.51,
+  "rough_core_hours_high": 185.07,
+  "execution_policy": "cluster_only",
+  "selection_year": 2022,
+  "semantic_threshold": 0.98,
+  "selected_factors": [
+    "C084",
+    "C182"
+  ],
+  "stop_reason": "winner_did_not_exceed_block_max_null",
+  "k": 5,
+  "block_length_dates": 20,
+  "null": "shared_20_session_label_block_max_screen",
+  "null_is_exact_conditional_randomization": false,
+  "null_interpretation": "selection-only multiplicity screen; not final confirmation",
+  "validation_year_opened_by_this_script": false,
+  "locked_final_holdout_opened": false,
+  "elapsed_seconds": 7899.672358740121
+}

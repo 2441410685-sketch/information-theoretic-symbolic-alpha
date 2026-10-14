@@ -1,0 +1,29 @@
+{
+  "status": "complete",
+  "research_version": "lightgbm_final_v11_future_execution_filter_repair",
+  "reference_model": "LightGBM Final V1",
+  "v1_features_validation_model_parameters_unchanged": true,
+  "repair_scope": "data_contract_and_stateful_execution_only",
+  "oos_start": "2024-01-02",
+  "oos_end": "2026-08-19",
+  "fold_count": 32,
+  "feature_groups": [
+    "traditional",
+    "traditional_plus_rankic",
+    "traditional_plus_mi",
+    "traditional_plus_union",
+    "traditional_plus_cmi_core",
+    "union_only",
+    "mi_only"
+  ],
+  "top_k": 100,
+  "transaction_cost_bps": 0.0,
+  "execution_mode": "stateful_t1_open_t2_open",
+  "full_cross_section_predictions_saved": true,
+  "label_missing_oos_rows_were_predicted": true,
+  "original_locked_holdout_previously_opened": true,
+  "this_run_is_new_locked_holdout": false,
+  "interpretation": "V1.1 data-contract repair sensitivity run",
+  "lightgbm_version": "3.3.5",
+  "elapsed_seconds": 46755.42777167261
+}

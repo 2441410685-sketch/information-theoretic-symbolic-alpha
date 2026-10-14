@@ -1,0 +1,11 @@
+# 冻结实验的软件环境；日常开发也可使用 pyproject.toml 中的兼容版本范围。
+baostock==0.9.2
+numpy==2.4.6
+pandas==3.0.3
+pyarrow==24.0.0
+pytest==9.1.1
+scipy==1.17.1
+matplotlib==3.11.0
+scikit-learn==1.9.0
+# 集群优先使用4.6.0；旧glibc节点可使用API兼容的3.3.5 manylinux1 wheel。
+lightgbm>=3.3.5,<=4.6.0

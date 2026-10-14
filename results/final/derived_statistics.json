@@ -1,0 +1,38 @@
+{
+  "source": "V1.1 frozen data-contract repair sensitivity run",
+  "transaction_cost_bps": 0.0,
+  "paired_comparisons": {
+    "cmi_core_minus_traditional": {
+      "observations": 637,
+      "mean_daily_bps": 0.9399052197162403,
+      "arithmetic_annual_difference": 0.023685611536849255,
+      "newey_west_t_lag20": 1.307725509654738,
+      "moving_block_95pct_annual_lower": -0.01013894959132888,
+      "moving_block_95pct_annual_upper": 0.05990631712451708
+    },
+    "rankic_minus_traditional": {
+      "observations": 637,
+      "mean_daily_bps": 0.8541113903642368,
+      "arithmetic_annual_difference": 0.021523607037178767,
+      "newey_west_t_lag20": 0.9658790419684192,
+      "moving_block_95pct_annual_lower": -0.01966444986007414,
+      "moving_block_95pct_annual_upper": 0.06759108835935104
+    },
+    "mi_minus_traditional": {
+      "observations": 637,
+      "mean_daily_bps": -0.14918961192780225,
+      "arithmetic_annual_difference": -0.0037595782205806167,
+      "newey_west_t_lag20": -0.23459405199709357,
+      "moving_block_95pct_annual_lower": -0.03490836648904633,
+      "moving_block_95pct_annual_upper": 0.02807835739773608
+    },
+    "cmi_core_minus_rankic": {
+      "observations": 637,
+      "mean_daily_bps": 0.08579382935200361,
+      "arithmetic_annual_difference": 0.002162004499670491,
+      "newey_west_t_lag20": 0.13260736696764103,
+      "moving_block_95pct_annual_lower": -0.029983370379099105,
+      "moving_block_95pct_annual_upper": 0.03246543564010321
+    }
+  }
+}

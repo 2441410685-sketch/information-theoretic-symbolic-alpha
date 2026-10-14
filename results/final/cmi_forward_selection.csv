@@ -1,0 +1,4 @@
+﻿step,conditioning_dimension,selected_before,winner,winner_score,score_type,first_half_score,second_half_score,null_mean,null_q95,max_null_p_value,null_exceedances,candidate_count,passes_max_null,passes_selection_stability,accepted,decision
+1,0,,C084,0.0653653832253891,mi,0.06225458414399476,0.06912129394057054,0.0051532570395523445,0.008960650094749667,0.01,0,57,True,True,True,accept
+2,1,C084,C182,0.008303834940742938,cmi,0.003624042733193278,0.002033274874297275,0.003968766037336801,0.005522934101522381,0.01,0,56,True,True,True,accept
+3,2,"C084,C182",C102,0.00363964595065025,cmi,0.001206376458623204,0.005582522969463488,0.0032901150356661663,0.00463964181128218,0.29,28,55,False,True,False,stop_max_null

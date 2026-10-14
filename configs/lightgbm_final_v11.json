@@ -1,0 +1,87 @@
+{
+  "research_version": "lightgbm_final_v11_future_execution_filter_repair",
+  "protocol_frozen_date": "2026-09-26",
+  "repair_scope": "data_contract_and_stateful_execution_only",
+  "data": {
+    "clean_panel": "data/processed/clean_panel_v11.parquet",
+    "execution_bars": "data/processed/execution_bars_v11.parquet",
+    "trading_calendar": "data/processed/trading_calendar_v11.csv",
+    "data_summary": "data/processed/data_summary_v11.json",
+    "industry_monthly_pit": "data/processed/industry_monthly_pit.csv",
+    "candidate_representatives": "results/final/gp_representatives_57.csv",
+    "history_start": "2018-01-01",
+    "download_start": "2015-01-01",
+    "final_data_end": "2026-08-19",
+    "execution_data_end": "2026-08-21",
+    "oos_start": "2024-01-02",
+    "oos_end": "2026-08-19",
+    "locked_final_holdout_start": "2024-01-01",
+    "original_locked_final_holdout_start": "2024-01-01",
+    "holdout_policy": "data_contract_repair_sensitivity_not_a_new_locked_holdout"
+  },
+  "features": {
+    "traditional_count": 205,
+    "rankic_gp_count": 33,
+    "mi_gp_count": 24,
+    "union_gp_count": 57,
+    "cmi_core_ids": ["C084", "C182"],
+    "groups": [
+      "traditional",
+      "traditional_plus_rankic",
+      "traditional_plus_mi",
+      "traditional_plus_union",
+      "traditional_plus_cmi_core",
+      "union_only",
+      "mi_only"
+    ],
+    "representation": "winsorized_neutralized_rankgauss",
+    "missing_value_fill": 0.0
+  },
+  "validation": {
+    "window_type": "fixed_rolling",
+    "rolling_train_dates": 720,
+    "inner_validation_dates": 60,
+    "inner_gap_dates": 2,
+    "outer_gap_dates": 2,
+    "test_dates": 20,
+    "step_dates": 20
+  },
+  "model": {
+    "family": "lightgbm_regression_v1",
+    "objective": "regression_l2",
+    "metric": "l2",
+    "target": "daily_cross_sectional_rank_gaussian_label_1d",
+    "early_stopping_metric": "date_equal_weighted_rankgaussian_l2",
+    "learning_rate": 0.03,
+    "num_leaves": 31,
+    "max_depth": -1,
+    "min_data_in_leaf": 500,
+    "feature_fraction": 0.8,
+    "bagging_fraction": 0.8,
+    "bagging_freq": 1,
+    "lambda_l1": 0.1,
+    "lambda_l2": 5.0,
+    "max_bin": 63,
+    "num_boost_round": 1000,
+    "early_stopping_rounds": 100,
+    "seed": 20260925,
+    "num_threads": 16
+  },
+  "portfolio": {
+    "top_k": 100,
+    "weighting": "equal",
+    "target_gross_exposure": 1.0,
+    "round_trip_cost_bps": 0.0,
+    "execution_mode": "stateful_t1_open_t2_open",
+    "blocked_buy_policy": "keep_target_slot_in_cash",
+    "blocked_sell_policy": "carry_position_until_sellable",
+    "suspension_mark_policy": "carry_last_valid_open",
+    "leverage_allowed": false
+  },
+  "reporting": {
+    "yearly_periods": [2024, 2025, 2026],
+    "stress_month": "2026-07",
+    "primary_portfolio_metric": "annual_return_after_execution_constraints_0bps",
+    "save_full_cross_sectional_predictions": true
+  }
+}
