@@ -401,7 +401,7 @@ def required_terminals(expression: Expression) -> tuple[str, ...]:
 
 @dataclass(frozen=True, slots=True)
 class ExpressionAudit:
-    """面试和实验报告所需的表达式结构摘要。"""
+    """生成实验报告所需的表达式结构摘要。"""
 
     canonical: str
     structural_hash: str

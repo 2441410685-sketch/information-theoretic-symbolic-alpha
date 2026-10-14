@@ -193,7 +193,7 @@ results/final/figures/model_overview.png
 
 同一软件栈与 CPU 上应重现相同候选和近似相同浮点结果。不同 LightGBM、NumPy、BLAS 或 CPU 架构可能产生极小分裂差异，因此最终比较应允许浮点容差，而不是要求模型二进制完全相同。
 
-## 10. 不应复现的历史分支
+## 10. 非主线实验
 
 以下内容不属于最终主线：
 
@@ -203,4 +203,4 @@ results/final/figures/model_overview.png
 - 使用未来 `can_buy_t1/can_sell_t2` 预先删除训练样本的旧 panel；
 - 失败的集群提交、wheel 兼容性诊断与重复归档包。
 
-它们保留在本地历史仅用于说明研究如何证伪和修正，不应混入最终结果。
+最终复现流程仅包含冻结主线，不包含上述历史实验。

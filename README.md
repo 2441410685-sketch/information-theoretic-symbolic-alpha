@@ -4,9 +4,7 @@
 
 本项目研究两个问题：Mutual Information（MI）能否扩展 RankIC 的因子发现空间；Conditional Mutual Information（CMI）能否从高冗余候选中识别真正具有增量信息的因子。研究对象为全 A 股日频横截面，主标签是可执行的下一交易日开盘到再下一交易日开盘收益。
 
-项目的最终结论不是“MI 全面优于 RankIC”。更准确的结论是：
-
-> RankIC-GP 与 MI-GP 找到不同但互补的候选主题；把两路候选合并后，再用低维 CMI 做后置压缩，得到的两个核心因子在 LightGBM 中给出了最好的样本外点估计。然而纯 MI 因子库没有稳定超过传统因子，CMI-core 相对基线的增量也尚未达到严格统计显著。
+实验结果显示，RankIC-GP 与 MI-GP 产生了不同的候选主题。两路候选合并并经过低维 CMI 后置压缩后，两个核心因子在 LightGBM 对照实验中取得最高的样本外点估计；纯 MI 因子库未超过传统因子基线，CMI-core 相对基线的增量未达到统计显著。
 
 ## 核心结果
 
@@ -22,7 +20,7 @@ V1.1 使用修复后的 Point-in-Time 数据口径、32 个固定滚动 walk-for
 | Union only | 57 | 22.89% | 0.896 | -27.29% | 5.45% | 0.0596 |
 | MI only | 24 | 21.65% | 0.852 | -23.81% | 4.57% | 0.0577 |
 
-`Traditional + CMI core` 相对传统基线的配对日收益增量为 0.94 bps/日，算术年化 2.37%，Newey–West $t=1.31$；20 日 moving-block bootstrap 的年化 95% 区间为 $[-1.01\%,5.99\%]$。因此它是积极但未确认的证据，不应写成“发现显著 Alpha”。
+`Traditional + CMI core` 相对传统基线的配对日收益增量为 0.94 bps/日，算术年化 2.37%，Newey–West $t=1.31$；20 日 moving-block bootstrap 的年化 95% 区间为 $[-1.01\%,5.99\%]$，区间覆盖零。
 
 ![Frozen V1.1 result overview](results/final/figures/model_overview.png)
 
@@ -143,9 +141,4 @@ python scripts/build_final_report_assets.py
 - [代码结构与公式映射](docs/CODE_GUIDE.md)
 - [一键复现与集群说明](docs/REPRODUCIBILITY.md)
 - [后续策略迭代方向](docs/STRATEGY_ITERATION.md)
-- [简历与面试表达](docs/RESUME_PROJECT.md)
 - [最终结果证据包](results/final/README.md)
-
-## 研究边界
-
-本仓库是研究项目，不构成投资建议。数据截至 2026-08-21；可用于监督学习的最后信号日为 2026-08-19。当前正式结果没有扣除交易成本，内部基准是每日合格股票截面的等权收益，不是中证全指可投资指数。策略进入仿真实盘前仍需成本、容量、风险暴露和新未见样本检验。
